@@ -1,0 +1,12 @@
+{:itonami.blueprint/id "cloud-itonami-1103"
+ :itonami.blueprint/name "Malt Liquor and Malt Manufacturing Coordination"
+ :itonami.blueprint/isic-rev5 "1103"
+ :itonami.blueprint/domain :food/malt-liquor-brewing
+ :itonami.blueprint/license "AGPL-3.0-or-later"
+ :itonami.blueprint/social-impact [:food-security :food-safety :fair-labor]
+ :itonami.blueprint/governor :maltops-governor
+ :itonami.blueprint/robotics true
+ :itonami.blueprint/required-technologies [:robotics :identity :forms :dmn :bpmn :audit-ledger :cae]
+ :itonami.blueprint/optional-technologies [:optimization :telemetry]
+ :itonami.blueprint/status :public-oss
+ :itonami.blueprint/maturity :blueprint}
