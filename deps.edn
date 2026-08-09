@@ -1,5 +1,11 @@
 {:paths ["src"]
- :deps {}
+ ;; jp-go-digital-design-system (DADS) is this workspace's base design
+ ;; system; `jp-go-dds.skin` is the CSS-only compatibility skin the
+ ;; cloud-itonami operator consoles share, so the generated sample page
+ ;; carries no bespoke token vocabulary of its own.
+ :deps {io.github.kotoba-lang/jp-go-digital-design-system
+        {:git/url "https://github.com/kotoba-lang/jp-go-digital-design-system"
+         :git/sha "83db99546eabc53613ae826ea41d1533a3c574af"}}
  :aliases
  {:dev {:override-deps
         {io.github.kotoba-lang/langchain
@@ -7,6 +13,10 @@
         io.github.kotoba-lang/langgraph
         {:local/root "../../kotoba-lang/langgraph"}}}
   :run {:main-opts ["-m" "maltops.sim"]}
+  ;; clojure -M:dev:render-html [out-file] -> regenerate
+  ;; docs/samples/operator-console.html through the REAL actor
+  ;; (flagship checklist item 2).
+  :render-html {:main-opts ["-m" "maltops.render-html"]}
   :test {:extra-paths ["test"]
          :extra-deps {io.github.cognitect-labs/test-runner
                       {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
