@@ -3,7 +3,7 @@
 
   Closes flagship checklist item 2 for this repo: there was previously no
   demo page and no generator at all (`maltops.sim`, the repo's
-  `clojure -M:dev:run` entry point, is still the stub it shipped as --
+  `kbb -M:dev:run` entry point, is still the stub it shipped as --
   confirmed by running it before writing this file: it prints
   \"not yet implemented\" and touches none of the actor code, so there was
   no existing scenario to reuse and none of its ids could be trusted).
@@ -46,7 +46,7 @@
   the raw epoch values are never rendered -- only the Governor's verdict
   about them is. Two consecutive runs are byte-identical.
 
-  Usage: `clojure -M:dev:render-html [out-file]`
+  Usage: `kbb -M:dev:render-html [out-file]`
   (default `docs/samples/operator-console.html`)."
   (:require [clojure.java.io :as io]
             [kotoba.lang.text :as str]
@@ -377,7 +377,7 @@
      "    <p class=\"muted\">Demo snapshot — <code>maltops.store/demo-store</code> を種にして "
      "<code>maltops.operation/run-operation</code> → <code>maltops.governor/check</code> を実際に実行し、"
      "その結果の store と監査台帳から <code>maltops.render-html</code> がビルド時に生成"
-     "（<code>clojure -M:dev:render-html</code>）。実測値・規格・判定はすべて実行結果で、手書きの値は無い。</p>\n"
+     "（<code>kbb -M:dev:render-html</code>）。実測値・規格・判定はすべて実行結果で、手書きの値は無い。</p>\n"
      "    <table>\n"
      "      <thead><tr><th>バッチ</th><th>製品</th><th>法域</th><th>実測値 / 規格</th><th>ライフサイクル</th><th>最終処理</th></tr></thead>\n"
      "      <tbody>\n"
