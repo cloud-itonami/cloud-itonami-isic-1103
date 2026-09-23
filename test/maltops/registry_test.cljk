@@ -1,5 +1,5 @@
 (ns maltops.registry-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [maltops.registry :as registry]))
 
 ;; ──────────────────────── ABV Tolerance ──────────────────────
