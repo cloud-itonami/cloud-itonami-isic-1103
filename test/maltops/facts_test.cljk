@@ -1,5 +1,5 @@
 (ns maltops.facts-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [maltops.facts :as facts]))
 
 ;; ──────────────────────── Product Type Lookups ──────────────────────
