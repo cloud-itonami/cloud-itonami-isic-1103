@@ -1,0 +1,31 @@
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isic-1103"
+ :cases
+ [{:id :wort-to-whirlpool
+   :kind :pipe-flow
+   :procedure "wort pump transfers boiled wort from the kettle to the whirlpool through a 65 mm line"
+   :params {:diameter-m 0.065 :length-m 20.0 :roughness-m 1.5e-6
+            :density-kg-m3 1045.0 :viscosity-pa-s 5.0e-4 :pump-efficiency 0.55 :elevation-m 2.0}
+   :sweep {:param :q-m3s :values [0.005 0.010 0.015 0.020 0.025]}
+   :quantity :pressure-drop-pa
+   :limit {:max 1.5e5 :basis "estimate: ~1.5 bar available from the wort pump at the whirlpool's tangential inlet"}
+   :boundary {:lo 0.001 :hi 0.05}}
+  {:id :malt-kiln-bed
+   :kind :thermal
+   :procedure "kiln air cures a 0.8 m green-malt bed; the grain at the air inlet face must not scorch enzymes before the bed is dry"
+   :params {:thickness-m 0.80 :conductivity-w-mk 0.12 :density-kg-m3 550.0 :specific-heat-j-kgk 2000.0
+            :t0-c 20.0 :h-front-w-m2k 40.0 :h-back-w-m2k 5.0 :t-back-ambient-c 20.0
+            :threshold-c 85.0 :duration-s 36000.0 :nodes 21}
+   :sweep {:param :t-hot-c :values [60.0 70.0 80.0 90.0 100.0]}
+   :quantity :final-front-c
+   :limit {:max 85.0 :basis "estimate: pale-malt curing is typically ~80-85 C; hotter destroys diastatic enzymes (evaporative cooling of the wet bed is not modelled)"}
+   :boundary {:lo 50.0 :hi 120.0}}
+  {:id :keg-lift
+   :kind :manipulator
+   :procedure "arm lifts a filled 50 L keg from the keg filler onto the pallet"
+   :params {:l1-m 0.90 :l2-m 0.80 :m1-kg 25.0 :m2-kg 18.0
+            :from [0.90 0.20] :to [0.40 1.20] :duration-s 3.0 :steps 500}
+   :sweep {:param :payload-kg :values [15.0 30.0 45.0 63.0 75.0]}
+   :quantity :peak-tau1-nm
+   :limit {:max 900.0 :basis "estimate: continuous shoulder torque of an ~80 kg class palletizing arm"}
+   :boundary {:lo 1.0 :hi 150.0}}]}
